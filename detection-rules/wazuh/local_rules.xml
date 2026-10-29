@@ -1,0 +1,26 @@
+<!-- SOC Home Lab - Custom Wazuh Detection Rules -->
+<!-- Author: Renu -->
+
+<group name="local,sysmon,">
+
+  <!-- Stage 1: T1566.001 - mshta.exe HTA payload execution -->
+  <rule id="100010" level="12">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.image" type="pcre2">(?i)mshta\.exe$</field>
+    <description>Suspicious mshta.exe execution - possible HTA payload (T1566.001)</description>
+    <mitre>
+      <id>T1566.001</id>
+    </mitre>
+  </rule>
+
+  <!-- Stage 3: T1548.002 - UAC bypass via eventvwr.exe -->
+  <rule id="100012" level="14">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.parentImage" type="pcre2">(?i)eventvwr\.exe$</field>
+    <description>Unexpected child process of eventvwr.exe - possible UAC bypass (T1548.002)</description>
+    <mitre>
+      <id>T1548.002</id>
+    </mitre>
+  </rule>
+
+</group>

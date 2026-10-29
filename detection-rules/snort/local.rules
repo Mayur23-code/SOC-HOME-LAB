@@ -1,0 +1,8 @@
+# SOC Home Lab - Custom Snort Detection Rules
+# Author: Renu
+# Snort Version: 2.9.x (pfSense package)
+
+# Stage 1: T1566.001 - Suspicious .hta file download over HTTP
+# Note: ET Open ruleset does not cover generic .hta-over-HTTP patterns
+# Note: Must use 'tcp' not 'http' as protocol - Snort 2.9 limitation
+alert tcp any any -> any any (msg:"LOCAL Suspicious .hta file download over HTTP"; flow:established,to_server; content:".hta"; http_uri; classtype:trojan-activity; sid:1000001; rev:1;)
