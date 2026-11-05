@@ -125,9 +125,10 @@ Full rule files are in the detection-rules folder.
 
 detection-rules/wazuh/ — Custom Wazuh detection rules (local_rules.xml)
 detection-rules/snort/ — Custom Snort detection rules (local.rules)
-report/                — Full SANS-style incident report
+report/                — SANS-style incident report + Wazuh MITRE ATT&CK detection report PDF
 playbook/              — Step-by-step attack execution guide
 screenshots/           — Evidence screenshots from each detection stage
+tracking/              — Detection tracking spreadsheet (Excel + Markdown)
 
 ---
 
